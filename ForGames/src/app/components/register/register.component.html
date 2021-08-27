@@ -1,0 +1,24 @@
+<div class="mb-3 container global_container">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
+
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input class="form-control" type="text" formControlName="username">
+
+        <label for="email" class="form-label">Email</label>
+        <input class="form-control" type="email" formControlName="email">
+
+        <label for="password" class="form-label">Mot de passe</label>
+        <input class="form-control" type="password" formControlName="password">
+
+        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+        <input class="form-control" type="password" formControlName="confirmPassword">
+
+        <button class="btn btn-primary" type="submit" >S'inscrire</button>
+    </form>
+
+    <a routerLink="/login">J'ai déjà un compte ! Se connecter</a>
+</div>
+<!--[disabled]="registerForm.invalid" [disabled]="password!=confirmPassword"--><!-- <div *ngIf="f.userName.errors" class="invalid-feedback">
+                <div *ngIf="f.userName.errors.required">First Name is required</div>
+            </div> -->

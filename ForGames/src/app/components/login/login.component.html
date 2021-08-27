@@ -1,0 +1,11 @@
+<div class="mb-3 container global_container">
+    <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+        <label for="email" class="form-label">Email</label>
+        <input class="form-control" type="email" id="title" formControlName="email">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input class="form-control" type="password" id="Author" formControlName="password">
+        <button class="btn btn-primary" type="submit" >Se connecter</button>
+    </form>
+    <a routerLink="/register">Pas encore de compte ? Inscrivez-vous</a>
+</div>
+<!--[disabled]="loginForm.invalid"-->

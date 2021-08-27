@@ -1,0 +1,35 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+<script>
+
+  // Your web app's Firebase configuration
+
+  var firebaseConfig = {
+
+    apiKey: "AIzaSyDyBowXpWXV9CzBnV2JypHkAA7HOCJv7x0",
+
+    authDomain: "forgames-firebase.firebaseapp.com",
+
+    projectId: "forgames-firebase",
+
+    storageBucket: "forgames-firebase.appspot.com",
+
+    messagingSenderId: "792116428348",
+
+    appId: "1:792116428348:web:ff617bd2d73df9b824cd39"
+
+  };
+
+  // Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+
+</script>

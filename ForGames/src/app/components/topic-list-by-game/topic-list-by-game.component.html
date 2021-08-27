@@ -1,0 +1,14 @@
+<div class="global_container">
+    <div class="main_container">
+        <button routerLink="write-topic">Rédiger un topic</button>
+        <ul>
+            <app-topic *ngFor="let topic of topics; let i = index"
+            [topicTitle]="topic.title"
+            [topicContent]="topic.content"
+            [topicCreation]="topic.createdAt"
+            [topicAuthor]="topic.User.username"
+            [topicId]="topic.id"
+            [status]="'topic-list'"></app-topic>
+        </ul>
+    </div>
+</div>

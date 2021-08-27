@@ -1,0 +1,23 @@
+
+<div class="global_container">
+    <div class="main_container">
+        <a *ngIf="topic && gameName" [routerLink]="['/F/', gameName]">{{ gameName }} > {{ topic.title }}</a>
+        <app-topic *ngIf="topic"
+        [topicTitle]="topic.title"
+        [topicContent]="topic.content"
+        [topicCreation]="topic.createdAt"
+        [topicAuthor]="topic.User.username"
+        [status]="'answers'"></app-topic>
+
+        <form [formGroup]="answerForm" (ngSubmit)="OnSubmit()">
+            <input type="text" formControlName="content">
+            <button class="btn btn-primary" type="submit">Poster la réponse</button>
+        </form>
+        <ul>
+            <app-answer *ngFor="let answer of answers;"
+            [answerContent]="answer.content"
+            [answerCreation]="answer.createdAt"
+            [answerAuthor]="answer.User.username"></app-answer>
+        </ul>
+    </div>
+</div>

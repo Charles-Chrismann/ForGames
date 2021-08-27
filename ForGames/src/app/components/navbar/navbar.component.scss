@@ -1,0 +1,65 @@
+@media only screen and (max-width: 640px) {
+    #fullname{
+        display: none;
+    }
+
+    #logo{
+        margin-top: 0 !important;
+    }
+}
+
+
+header{
+    // height: 48px;
+    // width: 100%;
+    // padding: 4px;
+    // background-color: #fff;
+    // position: fixed;
+    // top: 0;
+
+    height: 48px;
+    width: 100%;
+    padding: 4px;
+    background-color: #001633;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    
+    
+    .logo{
+        display: flex;
+        cursor: pointer;
+        #logo{
+            height: 40px;
+            width: 40px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        h3{
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+        }
+    }
+
+    
+
+    .search_bar{
+        padding-top: 5px;
+
+        .results{
+            position: relative;
+            background-color: white;
+            border: solid 1px;
+        }
+    }
+
+    select {
+        display: none;
+    }
+}

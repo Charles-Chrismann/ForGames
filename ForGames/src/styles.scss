@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.global_container{
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+
+
+
+body{
+    background-color: #ededed;
+}
+
+
+
+ul{
+    list-style-type: none;
+    padding-top: 20px;
+    padding-left: 0;
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.posts_container{
+
+}
+
+.post{
+    width: 960px;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #fff;
+    border: grey solid 1px;
+}
+
+.post_bot{
+    display: flex;
+    p{
+        margin-bottom: 0;
+        color: rgb(172, 172, 172);
+    }
+}
+
+a {
+    color: #ffab40;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+}

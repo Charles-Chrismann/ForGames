@@ -1,0 +1,46 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/ForGames/dist
+/ForGames/tmp
+/ForGames/out-tsc
+# Only exists if Bazel was run
+/ForGames/bazel-out
+
+# dependencies
+/ForGames/node_modules
+/ForGames_backend/nodes_modules
+
+# profiling files
+ForGames/chrome-profiler-events*.json
+ForGames/speed-measure-plugin*.json
+
+# IDEs and editors
+ForGames/.project
+ForGames/.classpath
+ForGames/.c9/
+ForGames/*.launch
+ForGames/.settings/
+ForGames/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

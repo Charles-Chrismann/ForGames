@@ -1,0 +1,15 @@
+<div class="main_container">
+    <div class="">
+        <ul>
+            <app-topic *ngFor="let topic of topics"
+                [gameName]="topic.Game.name"
+                [topicAuthor]="topic.User.username"
+                [topicCreation]="topic.createdAt"
+                [topicTitle]="topic.title"
+                [topicContent]="topic.content"
+                [topicId]="topic.id"
+                [status]="'home'"
+            ></app-topic>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="global_container" *ngIf="initialUser">
+    
+    <form [formGroup]="profileForm" (ngSubmit)="OnSubmit()">
+      <div class="noSubmit">
+        <div class="profile_picture">
+          <div class="profile_picture_large">
+            <div class="profile_picture">
+              <img *ngIf="initial_avatar" src="{{ initialUser.profile_picture }}" alt="avatar">
+              <img *ngFor='let preview of previews' [src]="preview" class="preview">
+              <button class="fakeBtn">Parcourir</button>
+              <input
+              type="file"
+              class="input_avatar"
+              (change)="selectFile($event)"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="infos">
+          <label for="username" class="form-label">Nom d'utilisateur</label>
+          <input class="form-control" type="text" formControlName="username">
+
+          <label for="email" class="form-label">Email</label>
+          <input class="form-control" type="email" formControlName="email">
+
+          <label for="password" class="form-label">Changer de mot de passe</label>
+          <input class="form-control" type="password" formControlName="newPassword">
+
+          <!-- <label for="confirmPassword" class="form-label">Ancien mot de passe</label>
+          <input class="form-control" type="password" formControlName="confirmNewPassword"> -->
+
+          <label for="confirmPassword" class="form-label">Ancien mot de passe</label>
+          <input class="form-control" type="password" formControlName="oldPassword">
+
+          <label for="bio" class="form-label">Biographie</label>
+          <textarea class="form-control" formControlName="bio"></textarea>
+        </div>
+      </div>
+      
+      <div class="submit">
+        <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid">Mettre mon profile à jour</button>
+      </div>
+        
+    </form>
+
+  
+</div>

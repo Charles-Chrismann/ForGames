@@ -1,0 +1,2 @@
+answer.create => si la requete est invalide, un id est gaché, test l'existence du topic avant
+//auth.register => verifier si les champs sont pas vide

@@ -1,0 +1,15 @@
+<div class="mb-3 container global_container">
+    <form [formGroup]="topicForm" (ngSubmit)="OnSubmit()">
+    
+        <label for="title" class="form-label">Tire du topic</label>
+        <input class="form-control" type="text" formControlName="title">
+        <!-- <div *ngIf="f.userName.errors" class="invalid-feedback">
+            <div *ngIf="f.userName.errors.required">First Name is required</div>
+        </div> -->
+        
+        <label for="content" class="form-label">Contenu</label>
+        <input class="form-control" type="text" formControlName="content">
+        <button class="btn btn-primary" type="submit" >Poster</button>
+    </form>
+</div>
+<!--[disabled]="registerForm.invali d"" [disabled]="password!=confirmPassword"-->

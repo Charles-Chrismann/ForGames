@@ -1,0 +1,17 @@
+<li>
+    <!-- <a [routerLink]="['F', gameName, topicId]"></a> -->
+    <div class="post">
+        <div class="post_content">
+            <h3>
+                <a *ngIf="status == 'home'" [routerLink]="['F', gameName, topicId]">{{ topicTitle }}</a>
+                <a *ngIf="status == 'topic-list'" [routerLink]="[topicId]">{{ topicTitle }}</a>
+                <p *ngIf="status == 'answers'">{{ topicTitle }}</p>
+            </h3>
+            <p>{{ topicContent }}</p>
+        </div>
+        <div class="post_bot">
+            <p>published on {{ topicCreation | date:"dd/MM/yy" }} by {{ topicAuthor }}</p>
+            <p *ngIf="status == 'home'">. in <a [routerLink]="['F', gameName]">{{ gameName }}</a> </p>
+        </div>
+    </div>
+</li>
