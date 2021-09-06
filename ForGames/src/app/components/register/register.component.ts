@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
 
   initRegisterForm() {
     this.registerForm = new FormGroup({
-    username: new FormControl('',[Validators.required, Validators.maxLength(16)]),
+    username: new FormControl('',[Validators.required, Validators.maxLength(32)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
   
     // password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$')]),
     // confirmPassword: new FormControl('', Validators.required),
@@ -38,6 +38,8 @@ export class RegisterComponent implements OnInit {
     //  //validators: MustMatch('password', 'confirmPassword')
     );
   }
+
+  get f() { return this.registerForm.controls; }
 
   //get f() { return this.registerForm.controls; }
 
@@ -53,5 +55,10 @@ export class RegisterComponent implements OnInit {
     }
     console.log(user)
     this.authService.register(user).subscribe();
+  }
+
+  passwordMatch(){
+    console.log("tt",this.registerForm.value.password === this.registerForm.value.confirmPassword)
+    return this.registerForm.value.password == this.registerForm.value.confirmPassword
   }
 }

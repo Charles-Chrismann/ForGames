@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
   games: any;
   gameForm: FormGroup;
   currentGame: any;
-  selectGame = 1;
   focus = false;
   results!: any[]
 
@@ -27,15 +26,11 @@ export class NavbarComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.selectAllGames();
+    //this.selectAllGames();
     this.initForm();
-    // this.gameService.findOneGame('');
-    
   }
 
   onSelect(value: any){
-    console.log(value)
-    this.selectGame = value;
     this.gameService.currentGame.next(value);
     
   }
@@ -50,27 +45,27 @@ export class NavbarComponent implements OnInit {
     this.gameService.getAllGames().subscribe(
       (resp: any)=>{
         this.games = resp
-        console.log(resp)
       }
     )
   }
 
   OnSubmit(){
     const game = { name:this.gameForm.value.name }
-    this.gameService.createGame(game)
+    this.gameService.createGame(game).subscribe(
+      (resp) => {
+        this.router.navigate(['F/' + game.name])
+        this.gameService.currentGame.next(game.name);
+        this.OffFocus()
+      }
+    )
   }
 
   OnChange(event: any){
-    
-    // const name = { 
-    //   name: event.target.value
-    // }
+    this.focus = true
     const name = event.target.value
-    console.log(name)
     this.gameService.searchGame(name).subscribe(
       (resp) => {
         this.results = resp
-        console.log(this.results)
       }
     )
   }
@@ -80,13 +75,8 @@ export class NavbarComponent implements OnInit {
   }
 
   OnFocus(){
-    console.log("ttt")
     this.focus = true
   }
-
-  // onNavigate(name:string){
-  //   this.router.navigate(['/F/' + name]);
-  // }
   
   OffFocus(){
     setTimeout(() => {
@@ -97,5 +87,9 @@ export class NavbarComponent implements OnInit {
 
   authCheck(){
     return this.authService.isAuth()
+  }
+
+  logout(){
+    localStorage.removeItem('TOKEN_APPLI')
   }
 }

@@ -5,7 +5,7 @@
         <div class="profile_picture">
           <div class="profile_picture_large">
             <div class="profile_picture">
-              <img *ngIf="initial_avatar" src="{{ initialUser.profile_picture }}" alt="avatar">
+              <img *ngIf="initial_avatar" src="{{ initialUser.profile_picture }}">
               <img *ngFor='let preview of previews' [src]="preview" class="preview">
               <button class="fakeBtn">Parcourir</button>
               <input

@@ -24,7 +24,7 @@ export class GameService {
 
   createGame(game:object){
     // console.log(this.baseUrl + '/games/create')
-    return this.httpClient.post<any>(this.baseUrl + '/games/create', game)
+    return this.httpClient.post<any>(this.baseUrl + '/game/create', game)
   }
 
   // searchGame(name: any) {
@@ -35,9 +35,6 @@ export class GameService {
   // }
 
   searchGame(name: any) {
-    //throw new Error('Method not implemented.');
-    console.log(this.baseUrl + '/games/search/' + name)
-    console.log(name)
     return this.httpClient.get<any>(this.baseUrl + '/games/search/' + name)
   }
 }

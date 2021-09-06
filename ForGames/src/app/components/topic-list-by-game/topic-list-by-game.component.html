@@ -1,5 +1,8 @@
 <div class="global_container">
     <div class="main_container">
+        <div style="display: flex;">
+        <h3>Welcome in the world of {{ currentGame }}</h3>
+        </div>
         <button routerLink="write-topic">Rédiger un topic</button>
         <ul>
             <app-topic *ngFor="let topic of topics; let i = index"

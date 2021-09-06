@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 8080;
 app.use("/api", api);
 
-//.sync({ force: true })
+//.sync({ force: true })//.sync({ alter: true })
 db.sequelize.sync().then((req) => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

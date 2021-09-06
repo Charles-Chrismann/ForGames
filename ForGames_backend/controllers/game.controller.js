@@ -7,6 +7,7 @@ const Op = Sequelize.Op
 exports.create = async (req, res) => {
     console.log("-----game.create-----")
     const { name }  = req.body;
+    console.log(req.body)
     console.log(name)
     const newGame = await new Game({
         name

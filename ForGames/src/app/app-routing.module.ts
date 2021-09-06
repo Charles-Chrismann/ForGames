@@ -8,18 +8,19 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TopicListByGameComponent } from './components/topic-list-by-game/topic-list-by-game.component'
 import { WriteComponent } from './components/write/write.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   
   {path: 'F/:gameName', component: TopicListByGameComponent},
-  {path: 'F/:gameName/write-topic', component: WriteComponent},
+  {path: 'F/:gameName/write-topic', component: WriteComponent, canActivate : [AuthGuard]},
   {path: 'F/:gameName/:topicId', component: AnswersComponent},
 
   //{path: 'home', component: HomeComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  { path: 'F', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

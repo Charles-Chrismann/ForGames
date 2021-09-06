@@ -89,7 +89,8 @@ exports.findAllByTopic = async (req, res) => {
     Answer.findAll({ 
         where: { topicId: topicId},
         attributes: ["id", "content", "createdAt"],
-        include:  {model: User, attributes: ["username"]}
+        include:  {model: User, attributes: ["username"]}, 
+        order: [['createdAt', 'DESC']]
         // include: { model: Topic, attributes: ["id"]},
     })
     .then((Answers) => {

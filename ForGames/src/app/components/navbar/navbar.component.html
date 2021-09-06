@@ -1,26 +1,5 @@
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="home">ForGames</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink='/home'>Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/register">S'inscrire</a>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-</nav>-->
-
 <header>
   <div class="logo" routerLink="">
-    <!-- <div style="height: 40px; width: 40px;  background-color: blue;"></div> -->
     <div id="logo">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="15" width="32" height="2" fill="#FFAB40"/>
@@ -33,10 +12,10 @@
     </div> 
     <h3 id="fullname">ForGames</h3>
   </div>
-  <!-- <input type="text" placeholder="Rechercher un jeu"> -->
+
   <div class="search_bar" (focusout)="OffFocus()">
     <form [formGroup]="gameForm" (ngSubmit)="OnSubmit()" (input)="OnChange($event)" >
-      <input type="text" placeholder="rechercher un jeu" (focus)="OnFocus()">
+      <input type="text" placeholder="rechercher un jeu" (focus)="OnFocus()" formControlName="name">
     </form>
 
     <div  class="results" *ngIf="focus">
@@ -45,14 +24,30 @@
       </div>
     </div>
   </div>
-  <select name="" id="" (change)="onSelect($any($event.target).value)">
+  
+  <!-- <select name="" id="" (change)="onSelect($any($event.target).value)" style="display: block;">
     <option [value]="">Selectionner un jeu</option>
     <option  [routerLink]="['F',game.name]" *ngFor="let game of games" [value]="game.name">{{ game.name }}</option>
-  </select>
+  </select> -->
 
   <div class="account">
     <a *ngIf="!authCheck()" routerLink="/login">Se Connecter</a>
-    <a *ngIf="authCheck()" routerLink="/profile"><i class="material-icons">account_circle</i></a>
+    <div *ngIf="authCheck()">
+      <select style="display: none;">
+        <option routerLink="/profile"><a *ngIf="authCheck()" routerLink="/profile"><i class="material-icons">account_circle</i></a></option>
+        <option><span class="material-icons md-18" style="font-family: 'Material Icons';">face</span></option>
+        <option><button>
+          <i class="material-icons">account_circle</i>
+        </button></option>
+
+        <option value="account_box">account_box </option>
+      </select>
+
+      <a routerLink="/profile"><span class="material-icons">account_circle</span></a>
+      <a routerLink="" (click)="logout()"><span class="material-icons">logout</span></a>
+      
+    </div>
+    
   </div>
   
     

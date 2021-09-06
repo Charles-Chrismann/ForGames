@@ -9,3 +9,16 @@
     padding: 20px 24px;
     
 }
+
+.answerform{
+    
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    form{
+        width: 80%;
+        input{
+            width: 100%;
+            margin: auto;
+        }}
+}

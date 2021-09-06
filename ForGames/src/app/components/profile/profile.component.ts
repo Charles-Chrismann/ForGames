@@ -122,7 +122,7 @@ export class ProfileComponent implements OnInit {
     console.log(user)
     this.userService.updateUser(user).subscribe((resp) =>{
       console.log("AAAAAAAAAAAa")
-      this.router.navigate(['F'])
+      this.router.navigate([''])
     })
         
     // this.authService.register(user).subscribe();

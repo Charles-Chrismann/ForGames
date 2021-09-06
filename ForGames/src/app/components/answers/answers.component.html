@@ -9,10 +9,15 @@
         [topicAuthor]="topic.User.username"
         [status]="'answers'"></app-topic>
 
-        <form [formGroup]="answerForm" (ngSubmit)="OnSubmit()">
-            <input type="text" formControlName="content">
-            <button class="btn btn-primary" type="submit">Poster la réponse</button>
-        </form>
+        <div class="answerform" style="display: flex; justify-content: center; width: 100%;">
+            <form [formGroup]="answerForm" (ngSubmit)="OnSubmit()">
+                <input type="text" formControlName="content" style="margin-bottom: 10px;">
+                <div style="display: flex; justify-content: center;">
+                    <button class="btn btn-primary" type="submit" [disabled]="!checkAuth() || answerForm.invalid">Poster la réponse</button>
+                </div>
+                
+            </form>
+        </div>
         <ul>
             <app-answer *ngFor="let answer of answers;"
             [answerContent]="answer.content"

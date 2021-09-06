@@ -2,19 +2,35 @@
     
     <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
 
-        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <label for="username" class="form-label" [ngClass]="{'invalid-input': registerForm.controls.username.invalid}">Nom d'utilisateur</label>
         <input class="form-control" type="text" formControlName="username">
+        <div *ngIf="f.username.invalid && f.username.touched">
+            <small class="text-danger" *ngIf="f.username.errors?.required">Please enter a username</small>
+            <small class="text-danger" *ngIf="f.username.errors?.maxlength">Please enter a valide username (32 characters max)</small>
+        </div>
 
         <label for="email" class="form-label">Email</label>
         <input class="form-control" type="email" formControlName="email">
+        <div *ngIf="f.email.invalid && f.email.touched">
+            <small class="text-danger" *ngIf="f.email.errors?.required">Please enter an email</small>
+            <small class="text-danger" *ngIf="f.email.errors?.email">Please enter a valide email</small>
+        </div>
 
         <label for="password" class="form-label">Mot de passe</label>
         <input class="form-control" type="password" formControlName="password">
+        <div *ngIf="f.password.invalid && f.password.touched">
+            <small class="text-danger" *ngIf="f.password.errors?.required">Please enter a password</small>
+            <small class="text-danger" *ngIf="f.password.errors?.minlength">Please enter a valide password (8 characters min)</small>
+        </div>
 
         <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
         <input class="form-control" type="password" formControlName="confirmPassword">
+        <div *ngIf="(f.confirmPassword.invalid && f.confirmPassword.touched) || (f.confirmPassword.touched && !passwordMatch())">
+            <small class="text-danger" *ngIf="f.confirmPassword.errors?.required">Please confirm your password</small>
+            <small class="text-danger" *ngIf="(!passwordMatch() && !f.confirmPassword.errors?.required) || f.confirmPassword.errors?.minlength">Confirm failed</small>
+        </div>
 
-        <button class="btn btn-primary" type="submit" >S'inscrire</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!passwordMatch() || registerForm.invalid">S'inscrire</button>
     </form>
 
     <a routerLink="/login">J'ai déjà un compte ! Se connecter</a>

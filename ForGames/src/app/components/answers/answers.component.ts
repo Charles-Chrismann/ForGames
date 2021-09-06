@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from 'src/app/services/answer.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class AnswersComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private answerService: AnswerService,
-    private topicService: TopicService
+    private topicService: TopicService,
+    private authService : AuthService
   ) { 
     this.answerForm = new FormGroup({})
   }
@@ -31,7 +33,7 @@ export class AnswersComponent implements OnInit {
     // console.log(this.answers)
     this.selectId(this.topicId)
     this.selectAnswers();
-    this.initForm();
+    this.initAnswerForm();
   }
 
   selectAnswers() {
@@ -54,7 +56,8 @@ export class AnswersComponent implements OnInit {
     )
   }
 
-  initForm(){
+  initAnswerForm(){
+    console.log("inited")
     this.answerForm = new FormGroup ({
      content: new FormControl('', [Validators.required])
     })
@@ -71,7 +74,11 @@ export class AnswersComponent implements OnInit {
     console.log(answer)
     this.answerService.sendAnswer(answer).subscribe();
     this.selectAnswers();
-    this.initForm();
+    this.initAnswerForm();
+  }
+
+  checkAuth(){
+    return this.authService.isAuth()
   }
 
 }

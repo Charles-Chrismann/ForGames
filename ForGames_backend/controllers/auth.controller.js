@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
 require("dotenv").config();
 
-usernameMaxLength = 24;
+usernameMaxLength = 32;
 passwordMinLength = 8;
 
 function verif(toVerif, type){
@@ -24,6 +24,8 @@ exports.register = async (req, res) => {
   
   // Récupération des informations necessaire à l'inscription depuis le corps de la requete
   const { username, email, password } = req.body;
+  console.log(username)
+  console.log(username.length)
 
   // vérification de la bonne forme des informations
   if( !verif(username, "username") || !verif(password, "password")){ 
@@ -99,7 +101,7 @@ exports.login = async (req, res) => {
 
   // Récupération des informations necessaire à la connexion depuis le corps de la requete
   const { email, password } = req.body;
-
+  console.log()
   // Hashage du mot de passe pour comparaison
   let salt = await bcrypt.genSalt(10);
   let hashedPassword = await bcrypt.hash(password, salt);
@@ -119,7 +121,8 @@ exports.login = async (req, res) => {
       message: "Utilisateur inconnu"
     })
   }
-
+  console.log(userWithEmail.username)
+  console.log(userWithEmail.username.length)
   // Si l'utilisateur existe, on comparre le mot de passe connu et celui recu, tout deux hashé
   let compare = await bcrypt.compare(password, userWithEmail.password);
   if (compare == false) {

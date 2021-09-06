@@ -14,6 +14,7 @@ export class TopicListByGameComponent implements OnInit, OnChanges {
   topics: any;
   gameName = this.activatedRoute.snapshot.params['gameName'];
   topicSub?: Subscription;
+  currentGame: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,54 +22,21 @@ export class TopicListByGameComponent implements OnInit, OnChanges {
     private router: Router,
     private gameService: GameService
   ) {}
-  //   let nbevent = 0;
-  //   router.events.forEach((element) =>{
-  //     console.log("tttttttttt")
-  //     nbevent +=1
-  //     console.log(nbevent)
-  //   })
-    
-  //   if (nbevent == 3){
-  //   router.events.subscribe(
-      
-  //     (event) => {
-  //         if (event instanceof NavigationStart){
-  //           if (event.url.split("/").length != 2){
-  //             let Name = event.url.split("/")[2]
-  //             this.selectTopicByGameId(Name);
-  //           }
-            
-  //           //this.gameName = this.activatedRoute.snapshot.params['gameName'];
-  //         }
-          
-          
-  //         if (event instanceof NavigationEnd) {
-  //           // end of loading paegs
-  //         }
-  //     });
-  //   }
-  //  }
 
   ngOnInit(): void {
     this.gameName = this.activatedRoute.snapshot.params['gameName']
     this.gameService.findOneGame(this.gameName).subscribe(
       (resp) =>{
-        console.log(resp)
         this.topics = resp
       })
-    console.log(this.gameName)
     this.gameService.currentGame.subscribe(
-      (resp) =>{
-        console.group("ttttttt")
-        console.log(resp);
-        
+      (resp) =>{ 
+        this.currentGame = resp    
         this.gameService.findOneGame(resp).subscribe(
           (resp) =>{
-            console.log(resp)
             this.topics = resp
           }
         )
-        
       }
     )
   }
